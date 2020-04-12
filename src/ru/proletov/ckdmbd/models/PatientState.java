@@ -41,4 +41,16 @@ public class PatientState {
         this.noCaPhBindersUse = noCaPhBindersUse;
         this.activeD3Use = activeD3Use;
     }
+
+    public Ca getCalcium() {
+        return calciumLevel;
+    }
+
+    public Ph getPhosphorus() {
+        return phosphorusLevel;
+    }
+
+    public PTH getPTH() {
+        return pthLevel;
+    }
 }
