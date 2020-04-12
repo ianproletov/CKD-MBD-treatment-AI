@@ -2,19 +2,19 @@ package ru.proletov.ckdmbd.models;
 
 public class LaboratoryInvestigation {
 
-    private float value;
+    protected double value;
 
     protected String unitOfMeasurement;
 
-    public LaboratoryInvestigation(final float value) {
+    protected LaboratoryInvestigation(final double value) {
         this.value = value;
     }
 
-    public float getValue() {
+    protected double getValue() {
         return value;
     }
 
-    public void setValue(final float value) {
+    protected void setValue(final double value) {
         this.value = value;
     }
 
