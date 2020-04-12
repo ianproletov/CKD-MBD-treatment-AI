@@ -1,6 +1,6 @@
 package ru.proletov.ckdmbd.models;
 
-public class LaboratoryInvestigation {
+public abstract class LaboratoryInvestigation {
 
     protected double value;
 
