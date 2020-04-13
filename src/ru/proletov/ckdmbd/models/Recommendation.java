@@ -10,6 +10,13 @@ public class Recommendation {
 
     private TherapyChange activeD3;
 
+    public Recommendation() {
+        this.calcimimetics = TherapyChange.retain;
+        this.caBinders = TherapyChange.retain;
+        this.noCaBinders = TherapyChange.retain;
+        this.activeD3 = TherapyChange.retain;
+    }
+
     public TherapyChange getCalcimimetics() {
         return calcimimetics;
     }

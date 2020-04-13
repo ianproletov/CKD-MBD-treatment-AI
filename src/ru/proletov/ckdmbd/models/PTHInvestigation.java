@@ -1,27 +1,21 @@
 package ru.proletov.ckdmbd.models;
 
-public class PTH extends LaboratoryInvestigation {
+public class PTHInvestigation extends AbstractInvestigation {
 
-    private PTH.UnitOfMeasurement unitOfMeasurement;
+    private static final double CONVERTER = 9.43;
 
-    private static double CONVERTER = 9.43;
-
-    public PTH(final double value) {
-        super(value);
-        this.unitOfMeasurement = PTH.UnitOfMeasurement.pgml;
+    public PTHInvestigation(final double value) {
+        this(value, UnitOfMeasurement.pgml);
     }
 
-    public PTH(final double value, final PTH.UnitOfMeasurement unitOfMeasurement ) {
+    public PTHInvestigation(final double value, final UnitOfMeasurement unitOfMeasurement ) {
         super(value);
         this.unitOfMeasurement = unitOfMeasurement;
     }
 
-    public PTH.UnitOfMeasurement getUnitOfMeasurement() {
-        return unitOfMeasurement;
-    }
-
-    public void changeUnitOfMeasurement(final PTH.UnitOfMeasurement unitOfMeasurement) {
-        if (unitOfMeasurement == this.unitOfMeasurement) return;
+    @Override
+    public PTHInvestigation changeUnitOfMeasurement(final UnitOfMeasurement unitOfMeasurement) {
+        if (unitOfMeasurement == this.unitOfMeasurement) return this;
         double currentConverter = CONVERTER;
         switch (unitOfMeasurement) {
             case pgml:
@@ -35,10 +29,7 @@ public class PTH extends LaboratoryInvestigation {
                 throw new IllegalStateException("Unexpected value: " + unitOfMeasurement);
         }
         this.value = this.value * currentConverter;
-    }
-
-    public enum UnitOfMeasurement {
-        pgml, pkmoll
+        return this;
     }
 
     public static double GetConverter() {
