@@ -1,9 +1,6 @@
 package ru.proletov.ckdmbd.controllers;
 
-import ru.proletov.ckdmbd.models.PTH;
-import ru.proletov.ckdmbd.models.PatientState;
-import ru.proletov.ckdmbd.models.Recommendation;
-import ru.proletov.ckdmbd.models.TherapyChange;
+import ru.proletov.ckdmbd.models.*;
 
 public class RecommendationMaker {
 
@@ -13,7 +10,7 @@ public class RecommendationMaker {
 
         double currentPhLevel = patientState.getPhosphorus().getValue();
 
-        double currentPTHLevel = patientState.getPTH().changeUnitOfMeasurement(PTH.UnitOfMeasurement.pgml).getValue();
+        double currentPTHLevel = patientState.getPTH().changeUnitOfMeasurement(UnitOfMeasurement.pgml).getValue();
 
         boolean isActiveD3started = patientState.isActiveD3Use();
 
