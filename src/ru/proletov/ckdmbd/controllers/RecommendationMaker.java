@@ -1,10 +1,11 @@
 package ru.proletov.ckdmbd.controllers;
 
 import ru.proletov.ckdmbd.models.*;
+import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 
 public class RecommendationMaker {
 
-    public Recommendation makeRecommendation(final PatientState patientState) {
+    public Recommendation makeRecommendation(final PatientState patientState) throws InvalidUnitOfMeasureException {
 
         double currentCaLevel = patientState.getCalcium().getValue();
 
