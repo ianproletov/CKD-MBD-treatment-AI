@@ -33,9 +33,34 @@ public class CaInvestigationTest {
     @Test
     public void testGetDefaultUnitOfMeasurement() {
 
-        CaInvestigation caInvestigation = new CaInvestigation(2.2);
+        CaInvestigation caInvestigation = new CaInvestigation(2.1);
 
-        assertEquals(UnitOfMeasurement.mmoll, caInvestigation.getUnitOfMeasurement());
+        UnitOfMeasurement defaultUnitOfMeasurement = UnitOfMeasurement.mmoll;
+
+        assertEquals(defaultUnitOfMeasurement, caInvestigation.getUnitOfMeasurement());
 
     }
+
+    @Test
+    public void testChangeUnitOfMeasurement1() {
+        double inputValue = 2.1;
+        CaInvestigation caInvestigation = new CaInvestigation(inputValue);
+        caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mgdl);
+        double expectedValue = inputValue * CaInvestigation.GetConverter();
+
+        assertEquals(UnitOfMeasurement.mgdl, caInvestigation.getUnitOfMeasurement());
+        assertEquals(expectedValue, caInvestigation.getValue(), 0);
+    }
+
+    @Test
+    public void testChangeUnitOfMeasurement2() {
+        double inputValue = 8.46;
+        CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.mgdl);
+        caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mmoll);
+        double expectedValue = inputValue / CaInvestigation.GetConverter();
+
+        assertEquals(UnitOfMeasurement.mmoll, caInvestigation.getUnitOfMeasurement());
+        assertEquals(expectedValue, caInvestigation.getValue(), 0);
+    }
+
 }
