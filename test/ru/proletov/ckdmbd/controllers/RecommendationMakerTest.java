@@ -2,15 +2,16 @@ package ru.proletov.ckdmbd.controllers;
 
 import org.junit.Test;
 import ru.proletov.ckdmbd.models.*;
+import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 
 import static org.junit.Assert.*;
 
 public class RecommendationMakerTest {
 
     @Test
-    public void makeRecommendation() {
+    public void makeRecommendation() throws InvalidUnitOfMeasureException {
 
-        PatientState patientState = new PatientState(new Ca(2.0), new Ph(1.3), new PTH(800));
+        PatientState patientState = new PatientState(new CaInvestigation(2.0), new PhInvestigation(1.3), new PTHInvestigation(800));
         RecommendationMaker recommendationMaker = new RecommendationMaker();
         Recommendation recommendation = recommendationMaker.makeRecommendation(patientState);
 
