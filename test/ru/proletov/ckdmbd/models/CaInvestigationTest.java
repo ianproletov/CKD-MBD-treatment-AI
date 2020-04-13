@@ -1,13 +1,14 @@
 package ru.proletov.ckdmbd.models;
 
 import org.junit.Test;
+import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 
 import static org.junit.Assert.*;
 
 public class CaInvestigationTest {
 
     @Test
-    public void testGetValue() {
+    public void testGetValue() throws InvalidUnitOfMeasureException {
 
         double inputValue = 1.8;
 
@@ -18,7 +19,7 @@ public class CaInvestigationTest {
     }
 
     @Test
-    public void testSetValue() {
+    public void testSetValue() throws InvalidUnitOfMeasureException {
 
         double inputValue = 1.8;
         double inputValue2 = 1.47;
@@ -31,7 +32,7 @@ public class CaInvestigationTest {
     }
 
     @Test
-    public void testGetDefaultUnitOfMeasurement() {
+    public void testGetDefaultUnitOfMeasurement() throws InvalidUnitOfMeasureException {
 
         CaInvestigation caInvestigation = new CaInvestigation(2.1);
 
@@ -42,7 +43,7 @@ public class CaInvestigationTest {
     }
 
     @Test
-    public void testChangeUnitOfMeasurement1() {
+    public void testChangeUnitOfMeasurement1() throws InvalidUnitOfMeasureException {
         double inputValue = 2.1;
         CaInvestigation caInvestigation = new CaInvestigation(inputValue);
         caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mgdl);
@@ -53,7 +54,7 @@ public class CaInvestigationTest {
     }
 
     @Test
-    public void testChangeUnitOfMeasurement2() {
+    public void testChangeUnitOfMeasurement2() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
         CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.mgdl);
         caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mmoll);
@@ -61,6 +62,36 @@ public class CaInvestigationTest {
 
         assertEquals(UnitOfMeasurement.mmoll, caInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, caInvestigation.getValue(), 0);
+    }
+
+    @Test
+    public void testChangeUnitOfMeasurementException1() {
+        double inputValue = 8.46;
+        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.mgdl;
+        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.pgml;
+        try {
+            CaInvestigation caInvestigation = new CaInvestigation(inputValue, inputUnitOfMeasurement);
+            caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.pgml);
+            fail("Expected InvalidUnitOfMeasureException");
+        } catch(final InvalidUnitOfMeasureException e) {
+            assertEquals(e.getMessage(),
+                    "Can not to proceed this unit of measure" + wrongUnitOfMeasurement);
+        }
+    }
+
+    @Test
+    public void testChangeUnitOfMeasurementException2() {
+        double inputValue = 8.46;
+        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.mgdl;
+        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.pgml;
+        try {
+            CaInvestigation caInvestigation = new CaInvestigation(inputValue, wrongUnitOfMeasurement);
+            fail();
+            caInvestigation.changeUnitOfMeasurement(inputUnitOfMeasurement);
+        } catch(final InvalidUnitOfMeasureException e) {
+            assertEquals(e.getMessage(),
+                    "Can not to proceed this unit of measure" + wrongUnitOfMeasurement);
+        }
     }
 
 }
