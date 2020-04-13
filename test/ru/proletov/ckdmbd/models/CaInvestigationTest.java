@@ -71,7 +71,7 @@ public class CaInvestigationTest {
         UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.pgml;
         try {
             CaInvestigation caInvestigation = new CaInvestigation(inputValue, inputUnitOfMeasurement);
-            caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.pgml);
+            caInvestigation.changeUnitOfMeasurement(wrongUnitOfMeasurement);
             fail("Expected InvalidUnitOfMeasureException");
         } catch(final InvalidUnitOfMeasureException e) {
             assertEquals(e.getMessage(),
