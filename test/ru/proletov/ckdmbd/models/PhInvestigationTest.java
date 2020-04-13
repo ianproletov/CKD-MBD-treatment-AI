@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class PhInvestigationTest {
 
     @Test
-    public void getValue() {
+    public void testGetValue() {
 
         double inputValue = 1.8;
 
@@ -18,7 +18,7 @@ public class PhInvestigationTest {
     }
 
     @Test
-    public void setValue() {
+    public void testSetValue() {
 
         double inputValue = 1.8;
         double inputValue2 = 1.47;
@@ -32,7 +32,7 @@ public class PhInvestigationTest {
 
 
     @Test
-    public void getUnitOfMeasurement() {
+    public void testGetDefauleUnitOfMeasurement() {
 
         PhInvestigation phInvestigation = new PhInvestigation(1.9);
 
