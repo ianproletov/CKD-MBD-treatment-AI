@@ -72,7 +72,7 @@ public class PhInvestigationTest {
         UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.pgml;
         try {
             PhInvestigation phInvestigation = new PhInvestigation(inputValue, inputUnitOfMeasurement);
-            phInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.pgml);
+            phInvestigation.changeUnitOfMeasurement(wrongUnitOfMeasurement);
             fail("Expected InvalidUnitOfMeasureException");
         } catch(final InvalidUnitOfMeasureException e) {
             assertEquals(e.getMessage(),
