@@ -8,8 +8,8 @@ public class PatientStateTest {
     double inputCaLevel = 1.9;
     double inputPhLevel = 1.3;
     double inputPTHLevel = 800;
-    PTH inputPTH = new PTH(inputPTHLevel);
-    PatientState patientState = new PatientState(new Ca(inputCaLevel), new Ph(inputPhLevel), inputPTH);
+    PTHInvestigation inputPTHInvestigation = new PTHInvestigation(inputPTHLevel);
+    PatientState patientState = new PatientState(new CaInvestigation(inputCaLevel), new PhInvestigation(inputPhLevel), inputPTHInvestigation);
 
     @Test
     public void testGetCalcium() {
@@ -28,7 +28,7 @@ public class PatientStateTest {
     @Test
     public void getPthLevel() {
 
-        assertEquals(inputPTH, patientState.getPTH());
+        assertEquals(inputPTHInvestigation, patientState.getPTH());
 
     }
 }
