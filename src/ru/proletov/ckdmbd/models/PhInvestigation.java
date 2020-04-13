@@ -14,7 +14,8 @@ public class PhInvestigation extends AbstractInvestigation {
         this(value, UnitOfMeasurement.mmoll);
     }
 
-    public PhInvestigation(final double value, final UnitOfMeasurement unitOfMeasurement) throws InvalidUnitOfMeasureException {
+    public PhInvestigation(final double value, final UnitOfMeasurement unitOfMeasurement)
+            throws InvalidUnitOfMeasureException {
         super(value);
         if (Arrays.asList(validUnits).contains(unitOfMeasurement)) {
             this.unitOfMeasurement = unitOfMeasurement;
