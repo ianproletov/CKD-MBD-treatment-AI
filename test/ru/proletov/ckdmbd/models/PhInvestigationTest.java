@@ -39,4 +39,26 @@ public class PhInvestigationTest {
         assertEquals(UnitOfMeasurement.mmoll, phInvestigation.getUnitOfMeasurement());
 
     }
+
+    @Test
+    public void testChangeUnitOfMeasurement1() {
+        double inputValue = 2.1;
+        PhInvestigation phInvestigation = new PhInvestigation(inputValue);
+        phInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mgdl);
+        double expectedValue = inputValue * PhInvestigation.GetConverter();
+
+        assertEquals(UnitOfMeasurement.mgdl, phInvestigation.getUnitOfMeasurement());
+        assertEquals(expectedValue, phInvestigation.getValue(), 0);
+    }
+
+    @Test
+    public void testChangeUnitOfMeasurement2() {
+        double inputValue = 8.46;
+        PhInvestigation phInvestigation = new PhInvestigation(inputValue, UnitOfMeasurement.mgdl);
+        phInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mmoll);
+        double expectedValue = inputValue / PhInvestigation.GetConverter();
+
+        assertEquals(UnitOfMeasurement.mmoll, phInvestigation.getUnitOfMeasurement());
+        assertEquals(expectedValue, phInvestigation.getValue(), 0);
+    }
 }
