@@ -1,6 +1,7 @@
 package ru.proletov.ckdmbd.models;
 
 import org.junit.Test;
+import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +10,12 @@ public class PatientStateTest {
     double inputPhLevel = 1.3;
     double inputPTHLevel = 800;
     PTHInvestigation inputPTHInvestigation = new PTHInvestigation(inputPTHLevel);
-    PatientState patientState = new PatientState(new CaInvestigation(inputCaLevel), new PhInvestigation(inputPhLevel), inputPTHInvestigation);
+    PatientState patientState = new PatientState(new CaInvestigation(inputCaLevel),
+            new PhInvestigation(inputPhLevel),
+            inputPTHInvestigation);
+
+    public PatientStateTest() throws InvalidUnitOfMeasureException {
+    }
 
     @Test
     public void testGetCalcium() {
