@@ -2,11 +2,11 @@ package ru.proletov.ckdmbd.models;
 
 public class PatientState {
 
-    private CaInvestigation calciumLevel;
+    private CaInvestigation caInvestigation;
 
-    private PhInvestigation phosphorusLevel;
+    private PhInvestigation phInvestigation;
 
-    private PTHInvestigation pthInvestigationLevel;
+    private PTHInvestigation pthInvestigation;
 
     private boolean calcimimeticsUse;
 
@@ -16,26 +16,28 @@ public class PatientState {
 
     private boolean activeD3Use;
 
-    public PatientState(final CaInvestigation calciumLevel, final PhInvestigation phosphorusLevel, final PTHInvestigation pthInvestigationLevel) {
-        this(calciumLevel,
-             phosphorusLevel,
-                pthInvestigationLevel,
-            false,
-            false,
-            false,
-            false);
+    public PatientState(final CaInvestigation caInvestigation,
+                        final PhInvestigation phInvestigation,
+                        final PTHInvestigation pthInvestigation) {
+        this(caInvestigation,
+                phInvestigation,
+                pthInvestigation,
+               false,
+               false,
+               false,
+               false);
     }
 
-    public PatientState(final CaInvestigation calciumLevel,
-                        final PhInvestigation phosphorusLevel,
-                        final PTHInvestigation pthInvestigationLevel,
+    public PatientState(final CaInvestigation caInvestigation,
+                        final PhInvestigation phInvestigation,
+                        final PTHInvestigation pthInvestigation,
                         final boolean calcimimeticsUse,
                         final boolean caPhBindersUse,
                         final boolean noCaPhBindersUse,
                         final boolean activeD3Use) {
-        this.calciumLevel = calciumLevel;
-        this.phosphorusLevel = phosphorusLevel;
-        this.pthInvestigationLevel = pthInvestigationLevel;
+        this.caInvestigation = caInvestigation;
+        this.phInvestigation = phInvestigation;
+        this.pthInvestigation = pthInvestigation;
         this.calcimimeticsUse = calcimimeticsUse;
         this.caPhBindersUse = caPhBindersUse;
         this.noCaPhBindersUse = noCaPhBindersUse;
@@ -43,15 +45,15 @@ public class PatientState {
     }
 
     public CaInvestigation getCalcium() {
-        return calciumLevel;
+        return caInvestigation;
     }
 
     public PhInvestigation getPhosphorus() {
-        return phosphorusLevel;
+        return phInvestigation;
     }
 
     public PTHInvestigation getPTH() {
-        return pthInvestigationLevel;
+        return pthInvestigation;
     }
 
     public boolean isCalcimimeticsUse() {
