@@ -2,11 +2,11 @@ package ru.proletov.ckdmbd.models;
 
 public class PatientState {
 
-    private Ca calciumLevel;
+    private CaInvestigation calciumLevel;
 
-    private Ph phosphorusLevel;
+    private PhInvestigation phosphorusLevel;
 
-    private PTH pthLevel;
+    private PTHInvestigation pthInvestigationLevel;
 
     private boolean calcimimeticsUse;
 
@@ -16,41 +16,57 @@ public class PatientState {
 
     private boolean activeD3Use;
 
-    public PatientState(final Ca calciumLevel, final Ph phosphorusLevel, final PTH pthLevel) {
+    public PatientState(final CaInvestigation calciumLevel, final PhInvestigation phosphorusLevel, final PTHInvestigation pthInvestigationLevel) {
         this(calciumLevel,
              phosphorusLevel,
-             pthLevel,
+                pthInvestigationLevel,
             false,
             false,
             false,
             false);
     }
 
-    public PatientState(final Ca calciumLevel,
-                        final Ph phosphorusLevel,
-                        final PTH pthLevel,
+    public PatientState(final CaInvestigation calciumLevel,
+                        final PhInvestigation phosphorusLevel,
+                        final PTHInvestigation pthInvestigationLevel,
                         final boolean calcimimeticsUse,
                         final boolean caPhBindersUse,
                         final boolean noCaPhBindersUse,
                         final boolean activeD3Use) {
         this.calciumLevel = calciumLevel;
         this.phosphorusLevel = phosphorusLevel;
-        this.pthLevel = pthLevel;
+        this.pthInvestigationLevel = pthInvestigationLevel;
         this.calcimimeticsUse = calcimimeticsUse;
         this.caPhBindersUse = caPhBindersUse;
         this.noCaPhBindersUse = noCaPhBindersUse;
         this.activeD3Use = activeD3Use;
     }
 
-    public Ca getCalcium() {
+    public CaInvestigation getCalcium() {
         return calciumLevel;
     }
 
-    public Ph getPhosphorus() {
+    public PhInvestigation getPhosphorus() {
         return phosphorusLevel;
     }
 
-    public PTH getPTH() {
-        return pthLevel;
+    public PTHInvestigation getPTH() {
+        return pthInvestigationLevel;
+    }
+
+    public boolean isCalcimimeticsUse() {
+        return calcimimeticsUse;
+    }
+
+    public boolean isCaPhBindersUse() {
+        return caPhBindersUse;
+    }
+
+    public boolean isNoCaPhBindersUse() {
+        return noCaPhBindersUse;
+    }
+
+    public boolean isActiveD3Use() {
+        return activeD3Use;
     }
 }
