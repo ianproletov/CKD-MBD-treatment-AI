@@ -5,5 +5,6 @@ public enum TherapyChange {
     decrease,
     retain,
     start,
-    stop
+    stop,
+    nostart
 }
