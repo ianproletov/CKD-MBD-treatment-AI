@@ -10,7 +10,7 @@ abstract class AbstractInvestigation {
         this.value = value;
     }
 
-    abstract PTHInvestigation changeUnitOfMeasurement(final UnitOfMeasurement unitOfMeasurement);
+    abstract AbstractInvestigation changeUnitOfMeasurement(final UnitOfMeasurement unitOfMeasurement);
 
     public UnitOfMeasurement getUnitOfMeasurement() {
         return unitOfMeasurement;
