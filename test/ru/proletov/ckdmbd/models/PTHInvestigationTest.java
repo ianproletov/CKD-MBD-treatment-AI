@@ -60,7 +60,7 @@ public class PTHInvestigationTest {
     public void testChangeUnitOfMeasurementToDefault() throws InvalidUnitOfMeasureException {
         double inputValue = 9;
         PTHInvestigation pthInvestigation = new PTHInvestigation(inputValue, UnitOfMeasurement.pkmoll);
-        pthInvestigation.changeUnitOfMeasurement();
+        pthInvestigation.changeUnitToDefault();
         double expectedValue = inputValue * PTHInvestigation.GetConverter();
 
         assertEquals(UnitOfMeasurement.pgml, pthInvestigation.getUnitOfMeasurement());

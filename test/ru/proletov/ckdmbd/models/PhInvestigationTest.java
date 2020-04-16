@@ -69,7 +69,7 @@ public class PhInvestigationTest {
     public void testChangeUnitOfMeasurementToDefault() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
         PhInvestigation phInvestigation = new PhInvestigation(inputValue, UnitOfMeasurement.mgdl);
-        phInvestigation.changeUnitOfMeasurement();
+        phInvestigation.changeUnitToDefault();
         double expectedValue = inputValue / PhInvestigation.GetConverter();
 
         assertEquals(UnitOfMeasurement.mmoll, phInvestigation.getUnitOfMeasurement());

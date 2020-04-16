@@ -68,7 +68,7 @@ public class CaInvestigationTest {
     public void testChangeUnitOfMeasurementToDefault() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
         CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.mgdl);
-        caInvestigation.changeUnitOfMeasurement();
+        caInvestigation.changeUnitToDefault();
         double expectedValue = inputValue / CaInvestigation.GetConverter();
 
         assertEquals(UnitOfMeasurement.mmoll, caInvestigation.getUnitOfMeasurement());
