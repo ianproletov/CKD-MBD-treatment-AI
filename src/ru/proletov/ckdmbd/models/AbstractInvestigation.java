@@ -3,8 +3,6 @@ package ru.proletov.ckdmbd.models;
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 
 abstract class AbstractInvestigation {
-
-
     protected double value;
 
     protected UnitOfMeasurement unitOfMeasurement;
@@ -12,6 +10,9 @@ abstract class AbstractInvestigation {
     protected AbstractInvestigation(final double value) {
         this.value = value;
     }
+
+    abstract AbstractInvestigation changeUnitOfMeasurement()
+            throws InvalidUnitOfMeasureException;
 
     abstract AbstractInvestigation changeUnitOfMeasurement(final UnitOfMeasurement unitOfMeasurement)
             throws InvalidUnitOfMeasureException;
