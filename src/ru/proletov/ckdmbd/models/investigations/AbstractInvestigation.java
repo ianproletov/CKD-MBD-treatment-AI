@@ -14,6 +14,8 @@ abstract class AbstractInvestigation {
     abstract AbstractInvestigation changeUnitOfMeasurement(final UnitOfMeasurement unitOfMeasurement)
             throws InvalidUnitOfMeasureException;
 
+    abstract AbstractInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException;
+
     public UnitOfMeasurement getUnitOfMeasurement() {
         return unitOfMeasurement;
     }

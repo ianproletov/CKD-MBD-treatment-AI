@@ -42,6 +42,7 @@ public class PhInvestigation extends AbstractInvestigation {
         return this;
     }
 
+    @Override
     public PhInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
         return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }

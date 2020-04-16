@@ -43,6 +43,7 @@ public class PTHInvestigation extends AbstractInvestigation {
         return this;
     }
 
+    @Override
     public PTHInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
         return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }

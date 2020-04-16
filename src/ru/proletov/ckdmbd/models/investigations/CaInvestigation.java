@@ -43,6 +43,7 @@ public class CaInvestigation extends AbstractInvestigation {
         return this;
     }
 
+    @Override
     public CaInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
         return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
