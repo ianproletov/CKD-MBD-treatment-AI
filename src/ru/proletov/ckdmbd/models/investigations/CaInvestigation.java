@@ -1,4 +1,4 @@
-package ru.proletov.ckdmbd.models;
+package ru.proletov.ckdmbd.models.investigations;
 
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 

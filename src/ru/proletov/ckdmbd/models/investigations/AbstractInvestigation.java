@@ -1,4 +1,4 @@
-package ru.proletov.ckdmbd.models;
+package ru.proletov.ckdmbd.models.investigations;
 
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 
@@ -22,7 +22,7 @@ abstract class AbstractInvestigation {
         return value;
     }
 
-    protected void setValue(final double value) {
+    public void setValue(final double value) {
         this.value = value;
     }
 
