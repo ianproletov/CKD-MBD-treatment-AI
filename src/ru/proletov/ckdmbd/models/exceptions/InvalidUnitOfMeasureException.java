@@ -1,6 +1,6 @@
 package ru.proletov.ckdmbd.models.exceptions;
 
-import ru.proletov.ckdmbd.models.UnitOfMeasurement;
+import ru.proletov.ckdmbd.models.investigations.UnitOfMeasurement;
 
 public class InvalidUnitOfMeasureException extends Exception {
 
