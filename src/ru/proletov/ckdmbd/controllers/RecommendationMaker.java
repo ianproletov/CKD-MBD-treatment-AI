@@ -11,7 +11,7 @@ public class RecommendationMaker {
 
         double currentPhLevel = patientState.getPhosphorus().getValue();
 
-        double currentPTHLevel = patientState.getPTH().changeUnitOfMeasurement(UnitOfMeasurement.pgml).getValue();
+        double currentPTHLevel = patientState.getPTH().changeUnitOfMeasurement().getValue();
 
         boolean isActiveD3started = patientState.isActiveD3Use();
 
