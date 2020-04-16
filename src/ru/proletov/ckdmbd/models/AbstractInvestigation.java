@@ -11,9 +11,6 @@ abstract class AbstractInvestigation {
         this.value = value;
     }
 
-    abstract AbstractInvestigation changeUnitOfMeasurement()
-            throws InvalidUnitOfMeasureException;
-
     abstract AbstractInvestigation changeUnitOfMeasurement(final UnitOfMeasurement unitOfMeasurement)
             throws InvalidUnitOfMeasureException;
 
