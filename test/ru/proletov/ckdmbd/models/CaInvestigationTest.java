@@ -65,6 +65,17 @@ public class CaInvestigationTest {
     }
 
     @Test
+    public void testChangeUnitOfMeasurementToDefault() throws InvalidUnitOfMeasureException {
+        double inputValue = 8.46;
+        CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.mgdl);
+        caInvestigation.changeUnitOfMeasurement();
+        double expectedValue = inputValue / CaInvestigation.GetConverter();
+
+        assertEquals(UnitOfMeasurement.mmoll, caInvestigation.getUnitOfMeasurement());
+        assertEquals(expectedValue, caInvestigation.getValue(), 0);
+    }
+
+    @Test
     public void testChangeUnitOfMeasurementException1() {
         double inputValue = 8.46;
         UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.mgdl;
