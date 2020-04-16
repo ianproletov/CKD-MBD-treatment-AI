@@ -6,19 +6,12 @@ import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 public class RecommendationMaker {
 
     public Recommendation makeRecommendation(final PatientState patientState) throws InvalidUnitOfMeasureException {
-
-        double currentCaLevel = patientState.getCalcium().getValue();
-
-        double currentPhLevel = patientState.getPhosphorus().getValue();
-
-        double currentPTHLevel = patientState.getPTH().changeUnitOfMeasurement().getValue();
-
+        double currentCaLevel = patientState.getCalcium().changeUnitToDefault().getValue();
+        double currentPhLevel = patientState.getPhosphorus().changeUnitToDefault().getValue();
+        double currentPTHLevel = patientState.getPTH().changeUnitToDefault().getValue();
         boolean isActiveD3started = patientState.isActiveD3Use();
-
         boolean isCalcinineticsStarted = patientState.isCalcimimeticsUse();
-
         boolean isCaBindersStarted = patientState.isCaPhBindersUse();
-
         boolean isNoCaBindersStarted = patientState.isActiveD3Use();
 
         Recommendation result = new Recommendation();
