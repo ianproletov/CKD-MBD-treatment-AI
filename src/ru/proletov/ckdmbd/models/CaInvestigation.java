@@ -24,11 +24,6 @@ public class CaInvestigation extends AbstractInvestigation {
     }
 
     @Override
-    public CaInvestigation changeUnitOfMeasurement() throws InvalidUnitOfMeasureException {
-        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
-    }
-
-    @Override
     public CaInvestigation changeUnitOfMeasurement(UnitOfMeasurement unitOfMeasurement)
             throws InvalidUnitOfMeasureException {
         if (unitOfMeasurement == this.unitOfMeasurement) return this;
@@ -46,6 +41,10 @@ public class CaInvestigation extends AbstractInvestigation {
         }
         this.value = this.value * currentConverter;
         return this;
+    }
+
+    public CaInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
+        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
 
     public static double GetConverter() {

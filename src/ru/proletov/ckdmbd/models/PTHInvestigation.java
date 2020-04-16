@@ -24,11 +24,6 @@ public class PTHInvestigation extends AbstractInvestigation {
     }
 
     @Override
-    public PTHInvestigation changeUnitOfMeasurement() throws InvalidUnitOfMeasureException {
-        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
-    }
-
-    @Override
     public PTHInvestigation changeUnitOfMeasurement(final UnitOfMeasurement unitOfMeasurement)
             throws InvalidUnitOfMeasureException {
         if (unitOfMeasurement == this.unitOfMeasurement) return this;
@@ -46,6 +41,10 @@ public class PTHInvestigation extends AbstractInvestigation {
         }
         this.value = this.value * currentConverter;
         return this;
+    }
+
+    public PTHInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
+        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
 
     public static double GetConverter() {

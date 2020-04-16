@@ -24,11 +24,6 @@ public class PhInvestigation extends AbstractInvestigation {
      }
 
     @Override
-    public PhInvestigation changeUnitOfMeasurement() throws InvalidUnitOfMeasureException {
-        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
-    }
-
-    @Override
     public PhInvestigation changeUnitOfMeasurement(UnitOfMeasurement unitOfMeasurement) throws InvalidUnitOfMeasureException {
         if (unitOfMeasurement == this.unitOfMeasurement) return this;
         double currentConverter = CONVERTER;
@@ -45,6 +40,10 @@ public class PhInvestigation extends AbstractInvestigation {
         }
         this.value = this.value * currentConverter;
         return this;
+    }
+
+    public PhInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
+        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
 
     public static double GetConverter() {
