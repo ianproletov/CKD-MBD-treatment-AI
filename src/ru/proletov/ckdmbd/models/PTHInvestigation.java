@@ -5,10 +5,9 @@ import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 import java.util.Arrays;
 
 public class PTHInvestigation extends AbstractInvestigation {
-
     private static final double CONVERTER = 9.43;
-
     private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.pgml, UnitOfMeasurement.pkmoll};
+    private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.pgml;
 
     public PTHInvestigation(final double value) throws InvalidUnitOfMeasureException {
         this(value, UnitOfMeasurement.pgml);
@@ -22,6 +21,11 @@ public class PTHInvestigation extends AbstractInvestigation {
         } else {
             throw new InvalidUnitOfMeasureException(unitOfMeasurement);
         }
+    }
+
+    @Override
+    public PTHInvestigation changeUnitOfMeasurement() throws InvalidUnitOfMeasureException {
+        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
 
     @Override
