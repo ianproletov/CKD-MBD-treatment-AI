@@ -1,5 +1,9 @@
 package ru.proletov.ckdmbd.models;
 
+import ru.proletov.ckdmbd.models.investigations.CaInvestigation;
+import ru.proletov.ckdmbd.models.investigations.PTHInvestigation;
+import ru.proletov.ckdmbd.models.investigations.PhInvestigation;
+
 public class PatientState {
 
     private CaInvestigation caInvestigation;
