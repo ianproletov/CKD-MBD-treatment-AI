@@ -33,19 +33,23 @@ public class Recommendation {
         return activeD3;
     }
 
-    public void setCalcimimetics(TherapyChange calcimimetics) {
+    public Recommendation setCalcimimetics(TherapyChange calcimimetics) {
         this.calcimimetics = calcimimetics;
+        return this;
     }
 
-    public void setCaBinders(TherapyChange caBinders) {
+    public Recommendation setCaBinders(TherapyChange caBinders) {
         this.caBinders = caBinders;
+        return this;
     }
 
-    public void setNoCaBinders(TherapyChange noCaBinders) {
+    public Recommendation setNoCaBinders(TherapyChange noCaBinders) {
         this.noCaBinders = noCaBinders;
+        return this;
     }
 
-    public void setActiveD3(TherapyChange activeD3) {
+    public Recommendation setActiveD3(TherapyChange activeD3) {
         this.activeD3 = activeD3;
+        return this;
     }
 }
