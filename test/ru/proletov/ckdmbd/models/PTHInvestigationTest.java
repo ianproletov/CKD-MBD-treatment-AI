@@ -2,6 +2,8 @@ package ru.proletov.ckdmbd.models;
 
 import org.junit.Test;
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
+import ru.proletov.ckdmbd.models.investigations.PTHInvestigation;
+import ru.proletov.ckdmbd.models.investigations.UnitOfMeasurement;
 
 import static org.junit.Assert.*;
 

@@ -2,8 +2,8 @@ package ru.proletov.ckdmbd.models;
 
 import org.junit.Test;
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
-
-import java.awt.dnd.InvalidDnDOperationException;
+import ru.proletov.ckdmbd.models.investigations.PhInvestigation;
+import ru.proletov.ckdmbd.models.investigations.UnitOfMeasurement;
 
 import static org.junit.Assert.*;
 
