@@ -5,10 +5,9 @@ import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 import java.util.Arrays;
 
 public class PhInvestigation extends AbstractInvestigation {
-
     private static final double CONVERTER = 3.1;
-
     private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.mmoll, UnitOfMeasurement.mgdl};
+    private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.mmoll;
 
     public PhInvestigation(final double value) throws InvalidUnitOfMeasureException {
         this(value, UnitOfMeasurement.mmoll);
@@ -23,6 +22,11 @@ public class PhInvestigation extends AbstractInvestigation {
             throw new InvalidUnitOfMeasureException(unitOfMeasurement);
         }
      }
+
+    @Override
+    public PhInvestigation changeUnitOfMeasurement() throws InvalidUnitOfMeasureException {
+        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
+    }
 
     @Override
     public PhInvestigation changeUnitOfMeasurement(UnitOfMeasurement unitOfMeasurement) throws InvalidUnitOfMeasureException {
