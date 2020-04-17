@@ -56,7 +56,7 @@ public class RecommendationMaker {
                 return state.getResult();
             }
         }
-    return new Recommendation(); // должно быть исключение
+    return null; // м.б. должно быть исключение
     }
 
 }

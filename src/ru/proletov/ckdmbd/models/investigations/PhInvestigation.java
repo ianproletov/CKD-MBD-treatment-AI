@@ -5,9 +5,8 @@ import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 import java.util.Arrays;
 
 public class PhInvestigation extends AbstractInvestigation {
-    private static final double CONVERTER = 3.1;
-    private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.mmoll, UnitOfMeasurement.mgdl};
-    private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.mmoll;
+    private final static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.mmoll, UnitOfMeasurement.mgdl};
+    private final static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.mmoll;
 
     public PhInvestigation(final double value) throws InvalidUnitOfMeasureException {
         this(value, UnitOfMeasurement.mmoll);
@@ -21,19 +20,20 @@ public class PhInvestigation extends AbstractInvestigation {
         } else {
             throw new InvalidUnitOfMeasureException(unitOfMeasurement);
         }
+        converter = 3.1;
      }
 
     @Override
     public PhInvestigation changeUnitOfMeasurement(UnitOfMeasurement unitOfMeasurement) throws InvalidUnitOfMeasureException {
         if (unitOfMeasurement == this.unitOfMeasurement) return this;
-        double currentConverter = CONVERTER;
+        double currentConverter = converter;
         switch (unitOfMeasurement) {
             case mgdl:
                 this.unitOfMeasurement = UnitOfMeasurement.mgdl;
                 break;
             case mmoll:
                 this.unitOfMeasurement = UnitOfMeasurement.mmoll;
-                currentConverter = 1 / CONVERTER;
+                currentConverter = 1 / converter;
                 break;
             default:
                 throw new InvalidUnitOfMeasureException(unitOfMeasurement);
@@ -42,12 +42,11 @@ public class PhInvestigation extends AbstractInvestigation {
         return this;
     }
 
-    @Override
     public PhInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
         return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
 
     public static double GetConverter() {
-        return CONVERTER;
+        return converter;
     }
 }
