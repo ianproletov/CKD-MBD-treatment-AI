@@ -2,7 +2,6 @@ package ru.proletov.ckdmbd.controllers;
 
 import ru.proletov.ckdmbd.models.*;
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
-import ru.proletov.ckdmbd.models.levels.Levels;
 import static ru.proletov.ckdmbd.models.levels.Levels.*;
 
 
