@@ -5,6 +5,8 @@ import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 import ru.proletov.ckdmbd.models.investigations.PhInvestigation;
 import ru.proletov.ckdmbd.models.investigations.UnitOfMeasurement;
 
+import java.awt.dnd.InvalidDnDOperationException;
+
 import static org.junit.Assert.*;
 
 public class PhInvestigationTest {
