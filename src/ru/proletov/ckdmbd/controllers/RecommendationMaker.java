@@ -2,36 +2,16 @@ package ru.proletov.ckdmbd.controllers;
 
 import ru.proletov.ckdmbd.models.*;
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
-import ru.proletov.ckdmbd.models.levels.*;
+import ru.proletov.ckdmbd.models.levels.Levels;
+import static ru.proletov.ckdmbd.models.levels.Levels.*;
 
 
 public class RecommendationMaker {
-    ILevel caLevels;
-    ILevel phLevels;
-    ILevel pTHLevels;
-
-    public RecommendationMaker() {
-        this(new defCaLevels(), new defPhLevels(), new defPTHLevels());
-    }
-
-    public RecommendationMaker(final ICaLevels caLevels,   //м.б. нужно реализовать паттерн builder или вложенный класс
-                               final IPhLevels phLevels,
-                               final IPTHLevels pTHLevels) {
-        this.caLevels = caLevels;
-        this.phLevels = phLevels;
-        this.pTHLevels = pTHLevels;
-    }
 
     public Recommendation makeRecommendation(final PatientState patientState) throws InvalidUnitOfMeasureException {
         double currentCaLevel = patientState.getCalcium().changeUnitToDefault().getValue();
         double currentPhLevel = patientState.getPhosphorus().changeUnitToDefault().getValue();
         double currentPTHLevel = patientState.getPTH().changeUnitToDefault().getValue();
-        double lowCaLevel = caLevels.getLow();
-        double hiCaLevel = caLevels.getHi();
-        double lowPhLevel = phLevels.getLow();
-        double hiPhLevel = phLevels.getHi();
-        double lowPTHLevel = pTHLevels.getLow();
-        double hiPTHLevel = pTHLevels.getHi();
         boolean isActiveD3started = patientState.isActiveD3Use();
         boolean isCalcimimeticsStarted = patientState.isCalcimimeticsUse();
         boolean isCaBindersStarted = patientState.isCaPhBindersUse();
@@ -41,7 +21,7 @@ public class RecommendationMaker {
 
         State[] states = new State[]{
                 new State(
-                        (currentCaLevel < lowCaLevel && currentPhLevel < hiPhLevel && currentPTHLevel > hiPTHLevel),
+                        (currentCaLevel < CA_LOW && currentPhLevel < PH_HI && currentPTHLevel > PTH_HI),
                         new Recommendation()
                                 .setActiveD3((isActiveD3started) ? TherapyChange.increase : TherapyChange.start)
                                 .setCaBinders((isCaBindersStarted) ? TherapyChange.retain : TherapyChange.start)
