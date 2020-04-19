@@ -19,16 +19,6 @@ public class PTHInvestigationTest {
     }
 
     @Test
-    public void testSetValue() throws InvalidUnitOfMeasureException {
-        PTHInvestigation pthInvestigation = new PTHInvestigation(150);
-        double inputValue = 400;
-        pthInvestigation.setValue(inputValue);
-
-        assertEquals(inputValue, pthInvestigation.getValue(), 0);
-
-    }
-
-    @Test
     public void testGetUnitOfMeasurement() throws InvalidUnitOfMeasureException {
         double inputValue = 150;
         PTHInvestigation pthInvestigation = new PTHInvestigation(inputValue);

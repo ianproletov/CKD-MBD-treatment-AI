@@ -21,19 +21,6 @@ public class CaInvestigationTest {
     }
 
     @Test
-    public void testSetValue() throws InvalidUnitOfMeasureException {
-
-        double inputValue = 1.8;
-        double inputValue2 = 1.47;
-
-        CaInvestigation caInvestigation = new CaInvestigation(inputValue);
-        caInvestigation.setValue(inputValue2);
-
-        assertEquals(inputValue2, caInvestigation.getValue(), 0);
-
-    }
-
-    @Test
     public void testGetDefaultUnitOfMeasurement() throws InvalidUnitOfMeasureException {
 
         CaInvestigation caInvestigation = new CaInvestigation(2.1);
