@@ -25,7 +25,7 @@ public class CaInvestigationTest {
 
         CaInvestigation caInvestigation = new CaInvestigation(2.1);
 
-        UnitOfMeasurement defaultUnitOfMeasurement = UnitOfMeasurement.mmoll;
+        UnitOfMeasurement defaultUnitOfMeasurement = UnitOfMeasurement.MMOLL;
 
         assertEquals(defaultUnitOfMeasurement, caInvestigation.getUnitOfMeasurement());
 
@@ -35,40 +35,40 @@ public class CaInvestigationTest {
     public void testChangeUnitOfMeasurement1() throws InvalidUnitOfMeasureException {
         double inputValue = 2.1;
         CaInvestigation caInvestigation = new CaInvestigation(inputValue);
-        caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mgdl);
+        caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.MGDL);
         double expectedValue = inputValue * CaInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.mgdl, caInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.MGDL, caInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, caInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurement2() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
-        CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.mgdl);
-        caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mmoll);
+        CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.MGDL);
+        caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.MMOLL);
         double expectedValue = inputValue / CaInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.mmoll, caInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.MMOLL, caInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, caInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurementToDefault() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
-        CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.mgdl);
+        CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.MGDL);
         caInvestigation.changeUnitToDefault();
         double expectedValue = inputValue / CaInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.mmoll, caInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.MMOLL, caInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, caInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurementException1() {
         double inputValue = 8.46;
-        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.mgdl;
-        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.pgml;
+        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.MGDL;
+        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.PGML;
         try {
             CaInvestigation caInvestigation = new CaInvestigation(inputValue, inputUnitOfMeasurement);
             caInvestigation.changeUnitOfMeasurement(wrongUnitOfMeasurement);
@@ -82,8 +82,8 @@ public class CaInvestigationTest {
     @Test
     public void testChangeUnitOfMeasurementException2() {
         double inputValue = 8.46;
-        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.mgdl;
-        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.pgml;
+        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.MGDL;
+        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.PGML;
         try {
             CaInvestigation caInvestigation = new CaInvestigation(inputValue, wrongUnitOfMeasurement);
             fail();

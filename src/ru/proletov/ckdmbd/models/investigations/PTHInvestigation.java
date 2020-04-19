@@ -6,11 +6,11 @@ import java.util.Arrays;
 
 public class PTHInvestigation extends AbstractInvestigation {
     private static final double CONVERTER = 9.43;
-    private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.pgml, UnitOfMeasurement.pkmoll};
-    private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.pgml;
+    private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.PGML, UnitOfMeasurement.PKMOLL};
+    private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.PGML;
 
     public PTHInvestigation(final double value) throws InvalidUnitOfMeasureException {
-        this(value, UnitOfMeasurement.pgml);
+        this(value, UnitOfMeasurement.PGML);
     }
 
     public PTHInvestigation(final double value, final UnitOfMeasurement unitOfMeasurement )
@@ -29,11 +29,11 @@ public class PTHInvestigation extends AbstractInvestigation {
         if (unitOfMeasurement == this.unitOfMeasurement) return this;
         double currentConverter = CONVERTER;
         switch (unitOfMeasurement) {
-            case pgml:
-                this.unitOfMeasurement = UnitOfMeasurement.pgml;
+            case PGML:
+                this.unitOfMeasurement = UnitOfMeasurement.PGML;
                 break;
-            case pkmoll:
-                this.unitOfMeasurement = UnitOfMeasurement.pkmoll;
+            case PKMOLL:
+                this.unitOfMeasurement = UnitOfMeasurement.PKMOLL;
                 currentConverter = 1 / CONVERTER;
                 break;
             default:

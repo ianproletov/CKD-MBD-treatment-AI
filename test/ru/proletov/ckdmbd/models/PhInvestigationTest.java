@@ -5,8 +5,6 @@ import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 import ru.proletov.ckdmbd.models.investigations.PhInvestigation;
 import ru.proletov.ckdmbd.models.investigations.UnitOfMeasurement;
 
-import java.awt.dnd.InvalidDnDOperationException;
-
 import static org.junit.Assert.*;
 
 public class PhInvestigationTest {
@@ -27,7 +25,7 @@ public class PhInvestigationTest {
 
         PhInvestigation phInvestigation = new PhInvestigation(1.9);
 
-        assertEquals(UnitOfMeasurement.mmoll, phInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.MMOLL, phInvestigation.getUnitOfMeasurement());
 
     }
 
@@ -35,40 +33,40 @@ public class PhInvestigationTest {
     public void testChangeUnitOfMeasurement1() throws InvalidUnitOfMeasureException {
         double inputValue = 2.1;
         PhInvestigation phInvestigation = new PhInvestigation(inputValue);
-        phInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mgdl);
+        phInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.MGDL);
         double expectedValue = inputValue * PhInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.mgdl, phInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.MGDL, phInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, phInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurement2() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
-        PhInvestigation phInvestigation = new PhInvestigation(inputValue, UnitOfMeasurement.mgdl);
-        phInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.mmoll);
+        PhInvestigation phInvestigation = new PhInvestigation(inputValue, UnitOfMeasurement.MGDL);
+        phInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.MMOLL);
         double expectedValue = inputValue / PhInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.mmoll, phInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.MMOLL, phInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, phInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurementToDefault() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
-        PhInvestigation phInvestigation = new PhInvestigation(inputValue, UnitOfMeasurement.mgdl);
+        PhInvestigation phInvestigation = new PhInvestigation(inputValue, UnitOfMeasurement.MGDL);
         phInvestigation.changeUnitToDefault();
         double expectedValue = inputValue / PhInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.mmoll, phInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.MMOLL, phInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, phInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurementException1() {
         double inputValue = 8.46;
-        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.mgdl;
-        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.pgml;
+        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.MGDL;
+        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.PGML;
         try {
             PhInvestigation phInvestigation = new PhInvestigation(inputValue, inputUnitOfMeasurement);
             phInvestigation.changeUnitOfMeasurement(wrongUnitOfMeasurement);
@@ -82,8 +80,8 @@ public class PhInvestigationTest {
     @Test
     public void testChangeUnitOfMeasurementException2() {
         double inputValue = 8.46;
-        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.mgdl;
-        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.pgml;
+        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.MGDL;
+        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.PGML;
         try {
             PhInvestigation phInvestigation = new PhInvestigation(inputValue, wrongUnitOfMeasurement);
             fail();

@@ -6,11 +6,11 @@ import java.util.Arrays;
 
 public class PhInvestigation extends AbstractInvestigation {
     private static final double CONVERTER = 3.1;
-    private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.mmoll, UnitOfMeasurement.mgdl};
-    private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.mmoll;
+    private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.MMOLL, UnitOfMeasurement.MGDL};
+    private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.MMOLL;
 
     public PhInvestigation(final double value) throws InvalidUnitOfMeasureException {
-        this(value, UnitOfMeasurement.mmoll);
+        this(value, UnitOfMeasurement.MMOLL);
     }
 
     public PhInvestigation(final double value, final UnitOfMeasurement unitOfMeasurement)
@@ -28,11 +28,11 @@ public class PhInvestigation extends AbstractInvestigation {
         if (unitOfMeasurement == this.unitOfMeasurement) return this;
         double currentConverter = CONVERTER;
         switch (unitOfMeasurement) {
-            case mgdl:
-                this.unitOfMeasurement = UnitOfMeasurement.mgdl;
+            case MGDL:
+                this.unitOfMeasurement = UnitOfMeasurement.MGDL;
                 break;
-            case mmoll:
-                this.unitOfMeasurement = UnitOfMeasurement.mmoll;
+            case MMOLL:
+                this.unitOfMeasurement = UnitOfMeasurement.MMOLL;
                 currentConverter = 1 / CONVERTER;
                 break;
             default:

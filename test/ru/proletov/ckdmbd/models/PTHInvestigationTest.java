@@ -23,47 +23,47 @@ public class PTHInvestigationTest {
         double inputValue = 150;
         PTHInvestigation pthInvestigation = new PTHInvestigation(inputValue);
 
-        assertEquals(UnitOfMeasurement.pgml, pthInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.PGML, pthInvestigation.getUnitOfMeasurement());
     }
 
     @Test
     public void testChangeUnitOfMeasurement1() throws InvalidUnitOfMeasureException {
         double inputValue = 150;
         PTHInvestigation pthInvestigation = new PTHInvestigation(inputValue);
-        pthInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.pkmoll);
+        pthInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.PKMOLL);
         double expectedValue = inputValue / PTHInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.pkmoll, pthInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.PKMOLL, pthInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, pthInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurement2() throws InvalidUnitOfMeasureException {
         double inputValue = 9;
-        PTHInvestigation pthInvestigation = new PTHInvestigation(inputValue, UnitOfMeasurement.pkmoll);
-        pthInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.pgml);
+        PTHInvestigation pthInvestigation = new PTHInvestigation(inputValue, UnitOfMeasurement.PKMOLL);
+        pthInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.PGML);
         double expectedValue = inputValue * PTHInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.pgml, pthInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.PGML, pthInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, pthInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurementToDefault() throws InvalidUnitOfMeasureException {
         double inputValue = 9;
-        PTHInvestigation pthInvestigation = new PTHInvestigation(inputValue, UnitOfMeasurement.pkmoll);
+        PTHInvestigation pthInvestigation = new PTHInvestigation(inputValue, UnitOfMeasurement.PKMOLL);
         pthInvestigation.changeUnitToDefault();
         double expectedValue = inputValue * PTHInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.pgml, pthInvestigation.getUnitOfMeasurement());
+        assertEquals(UnitOfMeasurement.PGML, pthInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, pthInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurementException1() {
         double inputValue = 8.46;
-        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.pgml;
-        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.mgdl;
+        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.PGML;
+        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.MGDL;
         try {
             PTHInvestigation pTHInvestigation = new PTHInvestigation(inputValue, inputUnitOfMeasurement);
             pTHInvestigation.changeUnitOfMeasurement(wrongUnitOfMeasurement);
@@ -77,8 +77,8 @@ public class PTHInvestigationTest {
     @Test
     public void testChangeUnitOfMeasurementException2() {
         double inputValue = 8.46;
-        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.pgml;
-        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.mgdl;
+        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.PGML;
+        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.MGDL;
         try {
             PTHInvestigation pTHInvestigation = new PTHInvestigation(inputValue, wrongUnitOfMeasurement);
             fail();
