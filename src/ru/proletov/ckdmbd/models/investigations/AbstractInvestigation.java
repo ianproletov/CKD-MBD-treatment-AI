@@ -2,7 +2,7 @@ package ru.proletov.ckdmbd.models.investigations;
 
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
 
-abstract class AbstractInvestigation {
+public abstract class AbstractInvestigation {
     private double value;
 
     protected UnitOfMeasurement unitOfMeasurement;
@@ -26,4 +26,18 @@ abstract class AbstractInvestigation {
         this.value = value;
     }
 
+    public enum UnitOfMeasurement {
+        PGML("pg/ml"), PKMOLL("pkmok/l"), MMOLL("mmol/l"), MGDL("mg/dl");
+
+        private final String unit;
+
+        UnitOfMeasurement(final String unit) {
+            this.unit = unit;
+        }
+
+        @Override
+        public String toString() {
+            return unit;
+        }
+    }
 }

@@ -9,15 +9,15 @@ public class UnitOfMeasurementTest {
     @Test
     public void testToString() {
         String expected = "mg/dl";
-        UnitOfMeasurement currentUnit = UnitOfMeasurement.MGDL;
+        AbstractInvestigation.UnitOfMeasurement currentUnit = AbstractInvestigation.UnitOfMeasurement.MGDL;
 
         assertEquals(expected, currentUnit.toString());
     }
 
     @Test
     public void testOfEquality() {
-        UnitOfMeasurement currentUnit1 = UnitOfMeasurement.MGDL;
-        UnitOfMeasurement currentUnit2 = UnitOfMeasurement.MGDL;
+        AbstractInvestigation.UnitOfMeasurement currentUnit1 = AbstractInvestigation.UnitOfMeasurement.MGDL;
+        AbstractInvestigation.UnitOfMeasurement currentUnit2 = AbstractInvestigation.UnitOfMeasurement.MGDL;
 
         assertEquals(currentUnit1, currentUnit2);
     }

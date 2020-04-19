@@ -1,13 +1,13 @@
 package ru.proletov.ckdmbd.models.exceptions;
 
-import ru.proletov.ckdmbd.models.investigations.UnitOfMeasurement;
+import ru.proletov.ckdmbd.models.investigations.AbstractInvestigation;
 
 public class InvalidUnitOfMeasureException extends Exception {
 
-    private UnitOfMeasurement unitOfMeasurement;
+    private AbstractInvestigation.UnitOfMeasurement unitOfMeasurement;
     private final String message = "Can not to proceed this unit of measure";
 
-    public InvalidUnitOfMeasureException(final UnitOfMeasurement unitOfMeasurement) {
+    public InvalidUnitOfMeasureException(final AbstractInvestigation.UnitOfMeasurement unitOfMeasurement) {
         this.unitOfMeasurement = unitOfMeasurement;
     }
 

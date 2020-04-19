@@ -2,8 +2,8 @@ package ru.proletov.ckdmbd.models;
 
 import org.junit.Test;
 import ru.proletov.ckdmbd.models.exceptions.InvalidUnitOfMeasureException;
+import ru.proletov.ckdmbd.models.investigations.AbstractInvestigation;
 import ru.proletov.ckdmbd.models.investigations.CaInvestigation;
-import ru.proletov.ckdmbd.models.investigations.UnitOfMeasurement;
 
 import static org.junit.Assert.*;
 
@@ -25,7 +25,7 @@ public class CaInvestigationTest {
 
         CaInvestigation caInvestigation = new CaInvestigation(2.1);
 
-        UnitOfMeasurement defaultUnitOfMeasurement = UnitOfMeasurement.MMOLL;
+        AbstractInvestigation.UnitOfMeasurement defaultUnitOfMeasurement = AbstractInvestigation.UnitOfMeasurement.MMOLL;
 
         assertEquals(defaultUnitOfMeasurement, caInvestigation.getUnitOfMeasurement());
 
@@ -35,40 +35,40 @@ public class CaInvestigationTest {
     public void testChangeUnitOfMeasurement1() throws InvalidUnitOfMeasureException {
         double inputValue = 2.1;
         CaInvestigation caInvestigation = new CaInvestigation(inputValue);
-        caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.MGDL);
+        caInvestigation.changeUnitOfMeasurement(AbstractInvestigation.UnitOfMeasurement.MGDL);
         double expectedValue = inputValue * CaInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.MGDL, caInvestigation.getUnitOfMeasurement());
+        assertEquals(AbstractInvestigation.UnitOfMeasurement.MGDL, caInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, caInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurement2() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
-        CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.MGDL);
-        caInvestigation.changeUnitOfMeasurement(UnitOfMeasurement.MMOLL);
+        CaInvestigation caInvestigation = new CaInvestigation(inputValue, AbstractInvestigation.UnitOfMeasurement.MGDL);
+        caInvestigation.changeUnitOfMeasurement(AbstractInvestigation.UnitOfMeasurement.MMOLL);
         double expectedValue = inputValue / CaInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.MMOLL, caInvestigation.getUnitOfMeasurement());
+        assertEquals(AbstractInvestigation.UnitOfMeasurement.MMOLL, caInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, caInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurementToDefault() throws InvalidUnitOfMeasureException {
         double inputValue = 8.46;
-        CaInvestigation caInvestigation = new CaInvestigation(inputValue, UnitOfMeasurement.MGDL);
+        CaInvestigation caInvestigation = new CaInvestigation(inputValue, AbstractInvestigation.UnitOfMeasurement.MGDL);
         caInvestigation.changeUnitToDefault();
         double expectedValue = inputValue / CaInvestigation.GetConverter();
 
-        assertEquals(UnitOfMeasurement.MMOLL, caInvestigation.getUnitOfMeasurement());
+        assertEquals(AbstractInvestigation.UnitOfMeasurement.MMOLL, caInvestigation.getUnitOfMeasurement());
         assertEquals(expectedValue, caInvestigation.getValue(), 0);
     }
 
     @Test
     public void testChangeUnitOfMeasurementException1() {
         double inputValue = 8.46;
-        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.MGDL;
-        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.PGML;
+        AbstractInvestigation.UnitOfMeasurement inputUnitOfMeasurement = AbstractInvestigation.UnitOfMeasurement.MGDL;
+        AbstractInvestigation.UnitOfMeasurement wrongUnitOfMeasurement = AbstractInvestigation.UnitOfMeasurement.PGML;
         try {
             CaInvestigation caInvestigation = new CaInvestigation(inputValue, inputUnitOfMeasurement);
             caInvestigation.changeUnitOfMeasurement(wrongUnitOfMeasurement);
@@ -82,8 +82,8 @@ public class CaInvestigationTest {
     @Test
     public void testChangeUnitOfMeasurementException2() {
         double inputValue = 8.46;
-        UnitOfMeasurement inputUnitOfMeasurement = UnitOfMeasurement.MGDL;
-        UnitOfMeasurement wrongUnitOfMeasurement = UnitOfMeasurement.PGML;
+        AbstractInvestigation.UnitOfMeasurement inputUnitOfMeasurement = AbstractInvestigation.UnitOfMeasurement.MGDL;
+        AbstractInvestigation.UnitOfMeasurement wrongUnitOfMeasurement = AbstractInvestigation.UnitOfMeasurement.PGML;
         try {
             CaInvestigation caInvestigation = new CaInvestigation(inputValue, wrongUnitOfMeasurement);
             fail();
