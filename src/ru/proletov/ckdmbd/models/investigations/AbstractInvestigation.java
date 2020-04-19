@@ -11,6 +11,9 @@ public abstract class AbstractInvestigation {
         this.value = value;
     }
 
+    abstract AbstractInvestigation changeUnitOfMeasurement()
+            throws InvalidUnitOfMeasureException;
+
     abstract AbstractInvestigation changeUnitOfMeasurement(final UnitOfMeasurement unitOfMeasurement)
             throws InvalidUnitOfMeasureException;
 
@@ -22,12 +25,16 @@ public abstract class AbstractInvestigation {
         return value;
     }
 
+    public AbstractInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
+        return this.changeUnitOfMeasurement();
+    }
+
     protected void setValue(final double value) {
         this.value = value;
     }
 
     public enum UnitOfMeasurement {
-        PGML("pg/ml"), PKMOLL("pkmok/l"), MMOLL("mmol/l"), MGDL("mg/dl");
+        PGML("pg/ml"), PKMOLL("pkmol/l"), MMOLL("mmol/l"), MGDL("mg/dl");
 
         private final String unit;
 

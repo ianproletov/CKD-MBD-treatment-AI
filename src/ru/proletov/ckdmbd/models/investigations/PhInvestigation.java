@@ -10,7 +10,7 @@ public class PhInvestigation extends AbstractInvestigation {
     private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.MMOLL;
 
     public PhInvestigation(final double value) throws InvalidUnitOfMeasureException {
-        this(value, UnitOfMeasurement.MMOLL);
+        this(value, DEFAULT_UNIT);
     }
 
     public PhInvestigation(final double value, final UnitOfMeasurement unitOfMeasurement)
@@ -21,7 +21,12 @@ public class PhInvestigation extends AbstractInvestigation {
         } else {
             throw new InvalidUnitOfMeasureException(unitOfMeasurement);
         }
-     }
+    }
+
+    @Override
+    public PhInvestigation changeUnitOfMeasurement() throws InvalidUnitOfMeasureException {
+        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
+    }
 
     @Override
     public PhInvestigation changeUnitOfMeasurement(UnitOfMeasurement unitOfMeasurement) throws InvalidUnitOfMeasureException {
@@ -40,10 +45,6 @@ public class PhInvestigation extends AbstractInvestigation {
         }
         this.setValue(this.getValue() * currentConverter);
         return this;
-    }
-
-    public PhInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
-        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
 
     public static double GetConverter() {

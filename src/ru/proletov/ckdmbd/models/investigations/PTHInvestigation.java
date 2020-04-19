@@ -10,7 +10,7 @@ public class PTHInvestigation extends AbstractInvestigation {
     private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.PGML;
 
     public PTHInvestigation(final double value) throws InvalidUnitOfMeasureException {
-        this(value, UnitOfMeasurement.PGML);
+        this(value, DEFAULT_UNIT);
     }
 
     public PTHInvestigation(final double value, final UnitOfMeasurement unitOfMeasurement )
@@ -21,6 +21,11 @@ public class PTHInvestigation extends AbstractInvestigation {
         } else {
             throw new InvalidUnitOfMeasureException(unitOfMeasurement);
         }
+    }
+
+    @Override
+    public PTHInvestigation changeUnitOfMeasurement() throws InvalidUnitOfMeasureException {
+        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
 
     @Override
@@ -41,10 +46,6 @@ public class PTHInvestigation extends AbstractInvestigation {
         }
         this.setValue(this.getValue() * currentConverter);
         return this;
-    }
-
-    public PTHInvestigation changeUnitToDefault() throws InvalidUnitOfMeasureException {
-        return this.changeUnitOfMeasurement(DEFAULT_UNIT);
     }
 
     public static double GetConverter() {
