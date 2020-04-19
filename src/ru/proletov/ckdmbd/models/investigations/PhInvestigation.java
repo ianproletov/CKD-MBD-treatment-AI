@@ -38,7 +38,7 @@ public class PhInvestigation extends AbstractInvestigation {
             default:
                 throw new InvalidUnitOfMeasureException(unitOfMeasurement);
         }
-        this.value = this.value * currentConverter;
+        this.setValue(this.getValue() * currentConverter);
         return this;
     }
 
