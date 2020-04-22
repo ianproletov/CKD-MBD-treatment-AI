@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class PTHInvestigation extends AbstractInvestigation {
     private static final double CONVERTER = 9.43;
-    private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.PGML, UnitOfMeasurement.PKMOLL};
+    public final static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.PGML, UnitOfMeasurement.PKMOLL};
     private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.PGML;
 
     public PTHInvestigation(final double value) throws InvalidUnitOfMeasureException {

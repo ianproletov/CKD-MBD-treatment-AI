@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class CaInvestigation extends AbstractInvestigation {
     private static final double CONVERTER = 4;
-    private static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.MMOLL, UnitOfMeasurement.MGDL};
+    public final static UnitOfMeasurement[] validUnits = {UnitOfMeasurement.MMOLL, UnitOfMeasurement.MGDL};
     private static UnitOfMeasurement DEFAULT_UNIT = UnitOfMeasurement.MMOLL;
 
     public CaInvestigation(final double value) throws InvalidUnitOfMeasureException {
