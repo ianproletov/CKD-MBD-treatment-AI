@@ -1,5 +1,6 @@
 package ru.proletov.ckdmbd.models.views;
 
+import ru.proletov.ckdmbd.controllers.SimpleGraphicEngine;
 import ru.proletov.ckdmbd.models.investigations.AbstractInvestigation;
 import ru.proletov.ckdmbd.models.investigations.CaInvestigation;
 import ru.proletov.ckdmbd.models.investigations.PTHInvestigation;
@@ -9,7 +10,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SimpleGraphicView extends JFrame {
-
     private JTextArea result;
     private JPanel windowContent;
     private JPanel workSpaceContent;
@@ -22,7 +22,7 @@ public class SimpleGraphicView extends JFrame {
     private JLabel pthLabel;
     private JComboBox<String> pthBox;
     private JTextField pthTextField;
-    private JButton make;
+    private JButton generate;
 
     private BorderLayout bl;
     private GridBagLayout gbl;
@@ -31,6 +31,7 @@ public class SimpleGraphicView extends JFrame {
     public SimpleGraphicView() throws HeadlessException {
         super("CKD-MBD AI Recommendation Maker");
 
+        SimpleGraphicEngine simpleGraphicEngine = new SimpleGraphicEngine(this);
         windowContent = new JPanel();
 
         bl = new BorderLayout();
@@ -63,7 +64,8 @@ public class SimpleGraphicView extends JFrame {
             pthBox.addItem(currentUnit.toString());
         }
         pthTextField = new JTextField(5);
-        make = new JButton("Generate");
+        generate = new JButton("Generate");
+        generate.addActionListener(simpleGraphicEngine);
 
         addComponent(workSpaceContent, caLabel, 0, 0, 2, 1);
         addComponent(workSpaceContent, caTextField, 0, 2, 2, 1);
@@ -74,18 +76,45 @@ public class SimpleGraphicView extends JFrame {
         addComponent(workSpaceContent, pthLabel, 2, 0, 2, 1);
         addComponent(workSpaceContent, pthTextField, 2, 2, 2, 1);
         addComponent(workSpaceContent, pthBox, 2, 4, 2, 1);
-        addComponent(workSpaceContent, make, 3, 2, 2, 1);
+        addComponent(workSpaceContent, generate, 3, 2, 2, 1);
 
-
-        //      windowContent.add(BorderLayout.SOUTH, make);
         windowContent.add(BorderLayout.CENTER, workSpaceContent);
 
         setContentPane(windowContent);
         setSize(320, 400);
         setLocationByPlatform(true);
         setVisible(true);
-        //     setResizable(false);
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    public JComboBox<String> getCaBox() {
+        return caBox;
+    }
+
+    public String getCaTextField() {
+        return caTextField.getText();
+    }
+
+    public JComboBox<String> getPhBox() {
+        return phBox;
+    }
+
+    public String getPhTextField() {
+        return phTextField.getText();
+    }
+
+    public JComboBox<String> getPthBox() {
+        return pthBox;
+    }
+
+    public String getPthTextField() {
+        return pthTextField.getText();
+    }
+
+
+    public void setResult(final String recommendation) {
+        result.setText("Current Recommendation:" + recommendation);
     }
 
     private void addComponent(Container container, Component component

@@ -52,4 +52,19 @@ public class Recommendation {
         this.activeD3 = activeD3;
         return this;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("\nCalcimimetics: ")
+                .append(calcimimetics)
+                .append("\nPhosphate-binders with calcium: ")
+                .append(caBinders)
+                .append("\nPhosphate-binders without calcium: ")
+                .append(noCaBinders)
+                .append("\nactiveD3: ")
+                .append(activeD3);
+        return result.toString();
+
+    }
 }
